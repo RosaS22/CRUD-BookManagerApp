@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Manager</title>
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for additional styling */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Book Manager</h1>
+        
+        <!-- Form to add or update a book -->
+        <form id="book-form">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Book</button>
+        </form>
+
+        <hr>
+
+        <!-- Section to display the list of books -->
+        <h2>Books</h2>
+        <ul id="book-list" class="list-group">
+            <!-- Books will be dynamically inserted here -->
+        </ul>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Custom script for handling CRUD operations -->
+    <script src="script.js"></script>
+</body>
+</html>

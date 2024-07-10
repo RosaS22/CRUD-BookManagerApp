@@ -1,0 +1,24 @@
+{
+  "books": [
+    {
+      "title": "Endless",
+      "author": "Devyn Sinclair",
+      "id": "9d5a"
+    },
+    {
+      "title": "Stolen Trophy",
+      "author": "K.A. Knight and Kendra Moreno",
+      "id": "6043"
+    },
+    {
+      "id": "0c76",
+      "title": "Demons In My Bed",
+      "author": "B"
+    },
+    {
+      "id": "9f67",
+      "title": "Things We Left Behind",
+      "author": "Lucy Score"
+    }
+  ]
+}
