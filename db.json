@@ -1,24 +1,37 @@
 {
   "books": [
     {
-      "title": "Endless",
-      "author": "Devyn Sinclair",
-      "id": "9d5a"
-    },
-    {
       "title": "Stolen Trophy",
       "author": "K.A. Knight and Kendra Moreno",
+      "dateRead": null,
       "id": "6043"
-    },
-    {
-      "id": "0c76",
-      "title": "Demons In My Bed",
-      "author": "B"
     },
     {
       "id": "9f67",
       "title": "Things We Left Behind",
-      "author": "Lucy Score"
+      "author": "Lucy Score",
+      "read": false,
+      "dateRead": null
+    },
+    {
+      "id": "e453",
+      "title": "Quintessence",
+      "author": "Serena Akeroyd",
+      "read": false,
+      "dateRead": null
+    },
+    {
+      "id": "5365",
+      "title": "Demons in My Bed",
+      "author": "Britt Andrews",
+      "read": false,
+      "dateRead": null
+    },
+    {
+      "id": "db57",
+      "title": "Bed of Roses",
+      "author": "DV Fischer",
+      "dateRead": "2024-07-17"
     }
   ]
 }

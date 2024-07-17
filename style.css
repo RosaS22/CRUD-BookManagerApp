@@ -1,0 +1,19 @@
+body {
+background-color:darkgray;
+}
+
+h1 {
+    font-family:cursive;
+}
+
+h2 {
+    font-family: cursive;
+}
+
+div {
+    outline: auto;
+}
+
+#book-list {
+    outline: auto;
+}

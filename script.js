@@ -12,7 +12,9 @@ $(document).ready(function() {
                     $('#book-list').append(`
                         <li class="list-group-item" data-id="${book.id}">
                             <strong>${book.title}</strong> by ${book.author}
-                            <button class="btn btn-danger btn-sm float-right delete-btn">Delete</button>
+                            ${book.dateRead ? `<span class="badge badge-success ml-2">Read on ${book.dateRead}</span>` : ''}
+                            <button class="btn btn-warning btn-sm float-right read-btn mr-2">${book.dateRead ? 'Mark as Unread' : 'Mark as Read'}</button>
+                            <button class="btn btn-danger btn-sm float-right delete-btn mr-2">Delete</button>
                             <button class="btn btn-info btn-sm float-right edit-btn mr-2">Edit</button>
                         </li>
                     `);
@@ -40,7 +42,8 @@ $(document).ready(function() {
         // Collect the form data
         const bookData = {
             title: $('#title').val(),
-            author: $('#author').val()
+            author: $('#author').val(),
+            dateRead: null // New books are not read by default
         };
 
         if (!editMode) { // If not in edit mode, add a new book
@@ -111,5 +114,42 @@ $(document).ready(function() {
         $('#title').val(title);
         $('#author').val(author);
         $('#book-form button').text('Update Book'); // Change button text to "Update Book"
+    });
+
+    // Event handler for toggling the read status of a book
+    $('#book-list').on('click', '.read-btn', function() {
+        const id = $(this).parent().data('id'); // Get the ID of the book to be marked as read
+        console.log("Toggling read status for book with ID:", id);
+
+        // Fetch the current book data
+        $.ajax({
+            url: `http://localhost:3000/books/${id}`, // API endpoint for fetching a single book
+            method: 'GET',
+            success: function(book) {
+                // Toggle the book's read status
+                if (book.dateRead) {
+                    book.dateRead = null;
+                } else {
+                    const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in YYYY-MM-DD format
+                    book.dateRead = currentDate;
+                }
+                $.ajax({
+                    url: `http://localhost:3000/books/${id}`, // API endpoint for updating a book
+                    method: 'PUT', // HTTP method for updating data
+                    data: JSON.stringify(book), // Data to be sent in the request body
+                    contentType: 'application/json', // Content type of the request
+                    success: function() {
+                        fetchBooks(); // Refresh the book list after updating
+                        console.log("Book read status toggled successfully.");
+                    },
+                    error: function() {
+                        console.error("Failed to update book."); // Log error if update fails
+                    }
+                });
+            },
+            error: function() {
+                console.error("Failed to fetch book data."); // Log error if fetch fails
+            }
+        });
     });
 });
